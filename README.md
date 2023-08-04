@@ -16,7 +16,7 @@ Include the `HTMLtoMD.hpp` file in your project and call the `ConvertHTMLToMarkd
 ```cpp
 #include "HTMLtoMD.hpp"
 
-std::wstring my_html = L"<h1>Hello, World!"</h1>";
+std::wstring my_html = L"<h1>Hello, World!</h1>";
 std::wstring markdown = ConvertHTMLToMarkdown(my_html);
 ```
 
