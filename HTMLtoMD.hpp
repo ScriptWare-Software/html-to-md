@@ -193,7 +193,9 @@ std::pair<std::wstring, std::wstring> ParseTag(const std::wstring& tag) {
 					 tag = tag.substr(1);
 				 }
 
-				 auto [tag_name, attributes] = ParseTag(tag);
+				 auto tag_attr = ParseTag(tag);
+				 std::wstring tag_name = tag_attr.first;
+				 std::wstring attributes = tag_attr.second;
 
 				 ASTNode node;
 				 node.type = ELEMENT;
