@@ -27,3 +27,22 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 ## Author
 Authored by Erdit (azulx), please feel free to reach out or contribute to this project!
+
+## How it Works
+The HTML to Markdown Parser operates in two main steps: parsing the HTML into an Abstract Syntax Tree (AST) and then converting the AST into Markdown.
+
+### Parsing HTML to AST
+In the first step, the parser reads through the input HTML and constructs an AST. Each node in the AST represents an HTML element (such as a paragraph, link, or header), a text block, or the root of the document.
+
+Each element node in the AST holds information about the element's name (like "p" for paragraph, "a" for link, etc.), its attributes (if any), and a list of its child nodes. Text nodes hold the text content. This structure allows the parser to capture the hierarchy and nesting of the HTML elements.
+
+### Converting AST to Markdown
+In the second step, the parser walks through the AST and converts each node into its corresponding Markdown syntax. For example, it converts a paragraph node (`<p>...</p>`) into text enclosed by two newline characters, a header node (`<h1>...</h1>`) into text prefixed by a '#' character (or a <h2> with a ##... etc.), and so on.
+
+Nested structures like lists and tables are handled via a recursive approach: when the parser encounters a node that can contain other nodes (like a list or a table), it makes a recursive call to process the child nodes associated with it.
+
+The parser also manages the indentation level of nested lists by using a counter, which increments when a new list is encountered and decrements when a list ends. This counter is used to prefix the right number of tab characters to the list items.
+
+### Error Handling
+As of writing (4th of August 2023), if the HTML input is malformed or otherwise straight-up incorrectly formatted, the parser will just return back the unaltered input HTML. 
+
