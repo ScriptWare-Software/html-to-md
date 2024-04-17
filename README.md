@@ -17,16 +17,13 @@ Include the `HTMLtoMD.hpp` file in your project and call the `ConvertHTMLToMarkd
 #include "HTMLtoMD.hpp"
 
 std::wstring my_html = L"<h1>Hello, World!</h1>";
-std::wstring markdown = ConvertHTMLToMarkdown(my_html);
+std::wstring markdown = html_to_md::ConvertHTMLToMarkdown(my_html);
 ```
 
 This will return a string containing the markdown equivalent of the input HTML.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
-
-## Author
-Authored by Erdit (azulx), please feel free to reach out or contribute to this project!
 
 ## How it Works
 The HTML to Markdown Parser operates in two main steps: parsing the HTML into an Abstract Syntax Tree (AST) and then converting the AST into Markdown.
@@ -42,7 +39,4 @@ In the second step, the parser walks through the AST and converts each node into
 Nested structures like lists and tables are handled via a recursive approach: when the parser encounters a node that can contain other nodes (like a list or a table), it makes a recursive call to process the child nodes associated with it.
 
 The parser also manages the indentation level of nested lists by using a counter, which increments when a new list is encountered and decrements when a list ends. This counter is used to prefix the right number of tab characters to the list items.
-
-### Error Handling
-As of writing (4th of August 2023), if the HTML input is malformed or otherwise straight-up incorrectly formatted, the parser will just return back the unaltered input HTML. 
 
